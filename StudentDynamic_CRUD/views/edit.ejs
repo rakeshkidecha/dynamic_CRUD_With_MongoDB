@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- font family -->
+     <link rel="stylesheet" href="/fonts/stylesheet.css" type="text/css" />
+     <!-- bootstrap css  -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <!-- main css  -->
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+    <form method="post" action="/editStudent" class="border border-2 border-black p-4 rounded-2">
+        <h1 class="fs-2">Upadte Student</h1>
+
+        <input type="hidden" name="stId" value="<%= singleStudent.id %>" />
+
+        <label class="w-100 mt-3 mb-2">Enter Name:-</label>
+        <input class="form-control py-1 px-3 bg-transparent border-2 border-secondary" type="text" name="name" value="<%= singleStudent.name %>">
+
+        <label class="w-100 mt-3 mb-2">Enter Email:-</label>
+        <input class="form-control py-1 px-3 bg-transparent border-2 border-secondary" type="text" name="email" value="<%= singleStudent.email %>">
+
+        <label class="w-100 mt-3 mb-2">Enter Password:-</label>
+        <input class="form-control py-1 px-3 bg-transparent border-2 border-secondary" type="password" name="password" value="<%= singleStudent.password %>">
+
+        <label class="w-100 mt-3 mb-2">Choose Gender:-</label>
+        <div class="radioField">
+            <input type="radio" name="gender" value="Male" <%= singleStudent.gender==='Male'?'checked':'' %>/><span class="ps-2 pe-4">Male</span>
+            <input type="radio" name="gender" value="Female" <%= singleStudent.gender==='Female'?'checked':'' %>/><span class="ps-2 pe-4">Female</span>
+            <input type="radio" name="gender" value="Other" <%= singleStudent.gender==='Other'?'checked':'' %>/><span class="ps-2 pe-4">Other</span>
+        </div>
+
+    
+        <label class="w-100 mt-3 mb-2">Choose hobby:-</label>
+        <% let hobbyNames=["Reading","Walking","Dancing","Playing","Riding","Traveling"] %>
+        <div class="checkboxField">
+            <% hobbyNames.map((item)=>{ %>
+                <div class="d-flex">
+                    <input type="checkbox" name="hobby" value="<%= item %>" <%= singleStudent.hobby.includes(item)?'checked':'' %>><span class="ps-2 pe-4"><%= item %></span>
+                </div>
+            <% }) %>
+        </div>
+
+        <label class="mt-3 mb-2">Select City:-</label>
+        <% let cityNmaes = ["Surat","Rajkot","Amreli","Vapi"] %>
+        <select name="city" class="bg-transparent py-1 px-2 ms-2 border-2 border-secondary">
+            <option value="">--select--</option>
+            <% cityNmaes.map((item)=>{ %>
+                <option value="<%= item %>" <%= singleStudent.city===item?'selected':'' %> ><%= item %></option>
+            <% }) %>
+        </select>
+
+        <label class="w-100 mt-3 mb-2" style="margin-top: 10px;">About:-</label>
+        <textarea name="about" class="form-control bg-transparent border-2 border-secondary"><%= singleStudent.about %></textarea>
+
+        <div class="d-flex  mt-4 justify-content-center">
+            <button type="submit" class="btn btn-success mx-2">Confirm</button>
+            <a href="/" class="btn btn-secondary mx-2">Cancel</a>
+        </div>
+    </form>
+
+    <script src="/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+</body>
+</html>

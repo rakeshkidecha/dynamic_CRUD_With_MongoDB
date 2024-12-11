@@ -1,0 +1,40 @@
+body{
+    background-color: #C1BAA1;
+    color: black;
+    font-family: "Lato", sans-serif;
+}
+nav ul{
+    background-color: #A59D84;
+}
+
+h1{
+    text-align: center;
+}
+form{
+    width: 40%;
+    margin: 40px auto;
+}
+.checkboxField{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: auto;
+    gap:4px;
+}
+form button{
+    transition: all 0.3s linear;
+}
+form button:hover{
+    transform: scale(1.04);
+}
+form select option{
+    background-color:#C1BAA1;
+}
+
+
+.studentsDetails{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+    gap: 10px;
+    margin: 40px 0;
+}

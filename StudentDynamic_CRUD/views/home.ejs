@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <!-- font family -->
+    <link rel="stylesheet" href="/fonts/stylesheet.css" type="text/css" />
+    <!-- bootstrap css  -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <!-- main css  -->
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+    <nav>
+        <ul class="list-unstyled d-flex justify-content-evenly ">
+            <li><a href="/" class="text-black nav-link my-3">Students Details</a></li>
+            <li><a href="/form" class="text-black nav-link my-3">Add Student form</a></li>
+        </ul>
+    </nav>
+    <h1 style="margin-top: 40px;">Student Dteails</h1>
+    <div class="container">
+        <% if(studentData.length <= 0 ){ %>
+            <p>No Student Data avalable</p>
+        <% } %>
+        
+        <div class="studentsDetails">
+            <% studentData.map((item)=>{ %>
+                <div class="p-4 border border-2 border-secondary rounded-2">
+                    <div class="my-2 d-flex"><span class="fw-bolder me-1">Name:- </span><span><%= item.name %></span></div>
+                    <div class="my-2 d-flex"><span class="fw-bolder me-1">Email:- </span><span><%= item.email %></span></div>
+                    <div class="my-2 d-flex"><span class="fw-bolder me-1">Password:- </span><span><%= item.password %></span></div>
+                    <div class="my-2 d-flex"><span class="fw-bolder me-1">gender:- </span><span><%= item.gender %></span></div>
+                    <div class="my-2 d-flex"><span class="fw-bolder me-1">Hobby:- </span><span><%= item.hobby.join(', ') %></span></div>
+                    <div class="my-2 d-flex"><span class="fw-bolder me-1">City:- </span><span><%= item.city %></span></div>
+                    <div class="my-2 d-flex"><span class="fw-bolder me-1">About:- </span><span><%= item.about %></span></div>
+                    <div class="mt-3 d-flex justify-content-center">
+                        <a href="/deleteStudent/<%= item.id %>" class="btn btn-danger mx-2" style="font-size: 14px;">Delete</a>
+                        <a href="/updateStudent/<%= item.id %>" class="btn btn-secondary mx-2" style="font-size: 14px;">Update</a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>
