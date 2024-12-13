@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- remixicon  -->
+    <link rel="stylesheet" href="/remix/remixicon.css" type="text/css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <!-- main css  -->
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+    <header class="bg-black py-2 text-center">
+        <a href="javascript:void(0)" class="navbar-brand fw-bolder">Update Review</a>
+    </header>
+    <form method="post" action="/editReview" class="mx-auto bg-white rounded-2 p-3 my-3" style="width: 40%;">
+        <input type="hidden" name="rId" value="<%= singleReview.id %>"/>
+        <% for (let i = 1; i <= 10; i++) { %>
+            <label class="rating-label">
+                <input type="radio" name="rating" value="<%= i %>" <%= singleReview.rating==i?'checked':'' %>>
+                <span><%= i %></span>
+            </label>
+        <% } %>
+        <input name="review" placeholder="Enter your review" class="form-control my-3" value="<%= singleReview.review %>"/>
+        <div class="review-input-group text-center my-3">
+            <button type="submit" class="btn btn-primary me-2" style="padding: 6px 14px !important;">confirm</button>
+            <a href="/" class="btn btn-secondary">cancel</a>
+        </div>
+    </form>
+</body>
+</html>
